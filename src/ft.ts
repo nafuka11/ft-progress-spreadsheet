@@ -44,22 +44,18 @@ export function fetchProjectInfo(id: number, token: string) {
     `&range[created_at]=${BEGIN_AT.toISOString()},${END_AT.toISOString()}`;
   const projects = fetchAllResource(url, token);
 
-  let projectInfo: ProjectInfo = {
+  const projectInfo: ProjectInfo = {
     validated: 0,
     submitted: 0,
     subscribed: 0
   }
-  for (const project of projects) {
-    if (project["validated?"])
-    {
-      projectInfo.validated++;
+  projects.forEach(
+    project => {
+      project["validated?"] ? projectInfo.validated++ : null;
+      !project["final_mark?"] ? projectInfo.submitted++ : null;
+      projectInfo.subscribed++;
     }
-    if (project["final_mark"] != null)
-    {
-      projectInfo.submitted++;
-    }
-    projectInfo.subscribed++;
-  }
+  )
   Logger.log(`id[${id}]: ${JSON.stringify(projectInfo)}`);
   return projectInfo;
 }
