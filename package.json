@@ -1,0 +1,20 @@
+{
+  "name": "ft_progress_spreadsheet",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/main.ts",
+  "scripts": {
+    "login": "clasp login",
+    "create": "clasp create --type sheets --rootDir ./src",
+    "push": "clasp push -f",
+    "open": "clasp open"
+  },
+  "author": "nafuka11",
+  "license": "MIT",
+  "dependencies": {
+    "@google/clasp": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/google-apps-script": "^1.0.14"
+  }
+}
