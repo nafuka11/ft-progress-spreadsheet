@@ -13,10 +13,8 @@ export function writeProgress(token: string) {
   // projectidのリストを取得
   const projectIds = fetchProjectIds(spreadsheet);
 
-  let projectInfos = [];
-  for (const id of projectIds) {
-    projectInfos.push(fetchProjectInfo(id, token));
-  }
+  const projectInfos = projectIds.map(id => fetchProjectInfo(id, token))
+
   insertProjectInfo(spreadsheet, projectInfos);
 }
 
@@ -32,10 +30,7 @@ function insertProjectInfo(
   const progressSheet = spreadsheet.getSheetByName("progress");
 
   progressSheet.insertRows(3, 1);
-  let insertData = [];
-  for (const projectInfo of projectInfos) {
-    insertData.push(projectInfo.validated, projectInfo.submitted, projectInfo.subscribed);
-  }
+  const insertData = projectInfos.map(p => [p.validated, p.submitted, p.subscribed]);
   const now = new Date();
   const dateStr = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}`;
 
@@ -55,16 +50,11 @@ function fetchProjectIds(
   spreadsheet: GoogleAppsScript.Spreadsheet.Spreadsheet): Array<number> {
   const projectsSheet = spreadsheet.getSheetByName("projects");
 
-  let row = 2;
-  let ids = [];
-  while (true) {
-    const id = projectsSheet.getRange(row, 1).getValue();
-    if (!id) {
-      break;
-    }
-    ids.push(id);
-    row++;
-  }
+  const row = 2;
+  const lastRow = projectsSheet.getRange(row, 1).getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow();
+  // read https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
+  const ids = projectsSheet.getRange(row, 1, lastRow - row + 1).getValues().flat();
+
   Logger.log(`project ids: ${ids}`);
   return ids;
 }
