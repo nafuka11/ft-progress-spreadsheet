@@ -30,14 +30,14 @@ function insertProjectInfo(
   const progressSheet = spreadsheet.getSheetByName("progress");
 
   progressSheet.insertRows(3, 1);
-  const insertData = projectInfos.map(p => [p.validated, p.submitted, p.subscribed]);
+  const insertData = projectInfos.map(p => [p.validated, p.submitted, p.subscribed]).flat();
   const now = new Date();
   const dateStr = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}`;
 
   progressSheet.getRange(3, 1).setValue(dateStr);
   progressSheet.getRange(3, 2, 1, insertData.length).setValues([insertData]);
 
-  Logger.log(`inserted: ${dateStr} ${insertData}`);
+  Logger.log(`inserted: ${dateStr} ${JSON.stringify(insertData)}`);
 }
 
 /**
