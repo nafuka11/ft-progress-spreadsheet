@@ -52,7 +52,7 @@ export function fetchProjectInfo(id: number, token: string) {
   projects.forEach(
     project => {
       project["validated?"] ? projectInfo.validated++ : null;
-      !project["final_mark?"] ? projectInfo.submitted++ : null;
+      project["final_mark"] !== null ? projectInfo.submitted++ : null;
       projectInfo.subscribed++;
     }
   )
