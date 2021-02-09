@@ -21,46 +21,46 @@ SpreadsheetにProjectの参加人数を追記するGoogle App Scriptです。
    git clone https://github.com/nafuka11/ft-progress-spreadsheet.git
    ```
 
-2. cloneしたリポジトリのディレクトリに移動し、必要なパッケージをインストール
+1. cloneしたリポジトリのディレクトリに移動し、必要なパッケージをインストール
 
    ```
    npm install
    ```
 
-3. Googleアカウントのログイン。アカウントを選択し、リクエストを許可する
+1. Googleアカウントのログイン。アカウントを選択し、リクエストを許可する
 
    ```
    npm run login
    ```
 
-4. https://script.google.com/home/usersettings にアクセスし、`Google Apps Script API`の設定をオンにする
+1. https://script.google.com/home/usersettings にアクセスし、`Google Apps Script API`の設定をオンにする
 
-5. Google App Scriptのプロジェクトを新規作成
+1. Google App Scriptのプロジェクトを新規作成
 
    ```
    npm run create
    ```
 
-6. ローカルのソースコードをプロジェクトにアップロード
+1. ローカルのソースコードをプロジェクトにアップロード
 
    ```
    npm run push
    ```
 
-7. プロジェクトをブラウザ上で開く
+1. プロジェクトをブラウザ上で開く
 
    ```
    npm run open
    ```
 
-8. ファイル > プロジェクトのプロパティから、`スクリプトのプロパティ`を追加する
+1. ファイル > プロジェクトのプロパティから、`スクリプトのプロパティ`を追加する
 
    | プロパティ | 値 |
    | -- | -- |
    | FT_API_UID | 42 APIのUID |
    | FT_API_SECRET | 42 APIのSecret |
 
-9. 編集 > 現在のプロジェクトのトリガー > 画面右下の「トリガーを追加」ボタンをクリック
+1. 編集 > 現在のプロジェクトのトリガー > 画面右下の「トリガーを追加」ボタンをクリック
 
    | 選択項目 | 値 |
    | -- | -- |
