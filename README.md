@@ -35,11 +35,16 @@ SpreadsheetにProjectの参加人数を追記するGoogle App Scriptです。
 
 1. https://script.google.com/home/usersettings にアクセスし、`Google Apps Script API`の設定をオンにする
 
+1. [Spreadsheetのテンプレート](https://docs.google.com/spreadsheets/d/1DomHREkhYUSwN4scouC69I8ACCAwW2zrfweuQ4fLHEw/edit?usp=sharing) のコピーを作成する。
+
 1. Google App Scriptのプロジェクトを新規作成
 
    ```
-   npm run create
+   npx clasp create --parentId <Spreadsheetのid>
    ```
+   <Spreadsheetのid> は上の手順で作成したSpreadsheetのURLの一部です。
+
+   例：URLが `https://docs.google.com/spreadsheets/d/abcdefg123456/edit#gid=0` なら、`abcdefg123456` となります。
 
 1. ローカルのソースコードをプロジェクトにアップロード
 
