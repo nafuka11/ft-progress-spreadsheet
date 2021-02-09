@@ -76,3 +76,14 @@ SpreadsheetにProjectの参加人数を追記するGoogle App Scriptです。
    | 時刻 | 午後11時〜午前0時<br /> (計測したい時刻に合わせて適宜変更してください。<br />ただし、timezoneがAmerica/New_Yorkになっているため、日付が一致しない場合にご注意ください) |
 
    ※トリガー追加時に「このアプリは確認されていません」画面が出ますが、詳細から安全ではないページに移動し、権限を付与してください。
+
+### campus, cursusなどを変更したい場合
+
+[ft.ts](src/ft.ts) の定数を変更ください。
+
+| 変数名 | 内容 |
+| -- | -- |
+| CAMPUS_ID | campusのID |
+| CURSUS_ID | cursusのID |
+| BEGIN_AT | プロジェクトデータ作成時刻範囲（開始） |
+| END_AT | プロジェクトデータ作成時刻範囲（終了） |
