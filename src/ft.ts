@@ -68,6 +68,7 @@ export function fetchProjectInfo(id: number, token: string) {
  * @returns リソース
  */
 function fetchResource(url: string, token: string) {
+  const before = Date.now();
   Logger.log(`fetch url: ${url}`);
   const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
     method: "get",
@@ -79,7 +80,12 @@ function fetchResource(url: string, token: string) {
     url,
     options
   );
-  Utilities.sleep(SLEEP_MILLISEC);
+  const after = Date.now();
+  const diff = after - before;
+  if (diff < SLEEP_MILLISEC)
+  {
+    Utilities.sleep(SLEEP_MILLISEC - diff);
+  }
   return JSON.parse(response.getContentText());
 }
 
