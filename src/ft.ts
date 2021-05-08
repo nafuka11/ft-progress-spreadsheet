@@ -10,7 +10,7 @@ const OAUTH_URL: string = "https://api.intra.42.fr/oauth/token";
 const ENDPOINT_URL: string = "https://api.intra.42.fr/v2";
 
 // APIアクセス毎のsleep時間
-const SLEEP_MILLISEC: number = 500;
+const SLEEP_MILLISEC: number = 600;
 
 /**
  * 42 APIからtokenを取得する
